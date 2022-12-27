@@ -250,19 +250,35 @@ console.log("Lesson 1");
 //   console.log(clientCounter);
 //   clientCounter += 1;
 // } while(clientCounter < maxClients)
-function findLongestWord(string) {
+
+// 21
+// function findLongestWord(string) {
+//   // Change code below this line
+//   const wordArray = string.split(" ");
+//   let longestWord = wordArray[0];
+//     console.log(wordArray);
+//     console.log('было', longestWord);
+//   for (let i = 0; i < wordArray.length; i++) {
+//     if (longestWord.length < wordArray[i].length) {
+//       longestWord = wordArray[i];
+//       console.log("стало", longestWord);
+//     }
+//   }
+//   return longestWord;
+//   // Change code above this line
+// }
+// findLongestWord("Google do a rokllk");
+
+// 22
+function createArrayOfNumbers(min, max) {
+    const numbers = [];
+    console.log(numbers);
   // Change code below this line
-  const wordArray = string.split(" ");
-  let longestWord = wordArray[0];
-    console.log(wordArray);
-    console.log('было', longestWord);
-  for (let i = 0; i < wordArray.length; i++) {
-    if (longestWord.length < wordArray[i].length) {
-      longestWord = wordArray[i];
-      console.log("стало", longestWord);
-    }
+  for (let i = min; i <= max; i += 1) {
+      numbers.push(i);
+      console.log(numbers)
   }
-  return longestWord;
   // Change code above this line
+  return numbers;
 }
-findLongestWord("Google do a rokllk");
+createArrayOfNumbers(3, 6);
