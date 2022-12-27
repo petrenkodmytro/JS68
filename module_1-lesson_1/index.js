@@ -1,34 +1,34 @@
-console.log("Lesson 1")
+console.log("Lesson 1");
 
 // # Модуль 1. Заняття 1. Змінні, типи та оператори
 
 // ## Example 1 - Математичні оператори
 
-// Виведи на екран загальну кількість всіх яблук. 
+// Виведи на екран загальну кількість всіх яблук.
 // кількість хороших яблук.
 
 // ```js
-const apples = 470;
-const badApples = 135;
-const halfApples = 67;
+// const apples = 470;
+// const badApples = 135;
+// const halfApples = 67;
 
-const harmfulApples = badApples + halfApples;
-console.log(harmfulApples);
+// const harmfulApples = badApples + halfApples;
+// console.log(harmfulApples);
 
-const goodApples = apples - harmfulApples;
-console.log(goodApples);
+// const goodApples = apples - harmfulApples;
+// console.log(goodApples);
 // ```
 
 // ## Example 2 - Комбіновані оператори
 
 // Заміни вираз перевизначення комбінованим оператором `+=`.
 
-// ```js
-let students = 100;
-// students = students + 50;
-students += 50;
+// // ```js
+// let students = 100;
+// // students = students + 50;
+// students += 50;
 
-console.log(students);
+// console.log(students);
 // ```
 
 // ## Example 3 - Пріоритет операторів
@@ -37,8 +37,8 @@ console.log(students);
 // `result`.
 
 // ```js
-const result = 108 + 223 - 2 * 5;
-console.log(result);
+// const result = 108 + 223 - 2 * 5;
+// console.log(result);
 // ```
 
 // ## Example 4 - Клас Math
@@ -48,14 +48,14 @@ console.log(result);
 // `Math.round()`. Перевір що буде в консолі при значеннях `27.3` та `27.9`.
 
 // ```js
-const value = 27.7;
-const rounded = Math.round(value);
-const roundedDown = Math.floor(value);
-const roundedUp = Math.ceil(value);
+// const value = 27.7;
+// const rounded = Math.round(value);
+// const roundedDown = Math.floor(value);
+// const roundedUp = Math.ceil(value);
 // ```
-console.log("Math.round", rounded);
-console.log("Math.roundedDown", roundedDown);
-console.log("Math.roundedUp", roundedUp);
+// console.log("Math.round", rounded);
+// console.log("Math.roundedDown", roundedDown);
+// console.log("Math.roundedUp", roundedUp);
 
 // ## Example 5 - Шаблонні рядки
 
@@ -63,12 +63,12 @@ console.log("Math.roundedUp", roundedUp);
 // змінні вставлені в рядок.
 
 // ```js
-const companyName = 'Cyberdyne Systems';
-const repairBots = 150;
-const defenceBots = 50;
-const totalBots = repairBots + defenceBots;
-const message = `${companyName} has ${totalBots} bots in stock`;
-console.log(message); // "Cyberdyne Systems has 200 bots in stock"
+// const companyName = 'Cyberdyne Systems';
+// const repairBots = 150;
+// const defenceBots = 50;
+// const totalBots = repairBots + defenceBots;
+// const message = `${companyName} has ${totalBots} bots in stock`;
+// console.log(message); // "Cyberdyne Systems has 200 bots in stock"
 // ```
 
 // ## Example 6 - Методи рядків та чейнінг
@@ -87,7 +87,7 @@ console.log(message); // "Cyberdyne Systems has 200 bots in stock"
  * 1. Знайти квадрат зросту людини //Math.pow()
  * 2. Розділити вагу на квадрат зросту. // звичайне ділення
  * 3. Округлити фінальний результат
- * 
+ *
  * Зробили:
  * 1. Запитали користувача ввести значення ваги і зросту
  * 2. Замінили можливу кому на крапку
@@ -120,26 +120,26 @@ console.log(message); // "Cyberdyne Systems has 200 bots in stock"
 // ## Example 7 - Оператори порівняння та приведення типів
 
 // Яким буде результат виразів?
-console.log('\n==============');
-console.log(5 > 4); // true
-console.log(10 >= '7'); // true. 
-console.log('2' > '12'); // true. String порівнюються посимвольно по коду символа. Як отримати код символа https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt
-console.log('2' < '12'); // false
-console.log('4' == 4); // true
-console.log('6' === 6); // false. 
-console.log('false' === false); // false
-console.log(1 == true);  // true. 
-console.log(1 === true); // false.
-console.log('0' == false); //true.
-console.log('0' === false); // false.
-console.log('Papaya' < 'papaya'); // true.
-const a = 'Papaya'.charCodeAt(0);
-const b = 'papaya'.charCodeAt(0);
-console.log(a,b)
+// console.log('\n==============');
+// console.log(5 > 4); // true
+// console.log(10 >= '7'); // true.
+// console.log('2' > '12'); // true. String порівнюються посимвольно по коду символа. Як отримати код символа https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt
+// console.log('2' < '12'); // false
+// console.log('4' == 4); // true
+// console.log('6' === 6); // false.
+// console.log('false' === false); // false
+// console.log(1 == true);  // true.
+// console.log(1 === true); // false.
+// console.log('0' == false); //true.
+// console.log('0' === false); // false.
+// console.log('Papaya' < 'papaya'); // true.
+// const a = 'Papaya'.charCodeAt(0);
+// const b = 'papaya'.charCodeAt(0);
+// console.log(a,b)
 
-console.log('Papaya' === 'papaya'); // false. 
-console.log(undefined == null); // true.
-console.log(undefined === null); // false.
+// console.log('Papaya' === 'papaya'); // false.
+// console.log(undefined == null); // true.
+// console.log(undefined === null); // false.
 // ```
 
 // ## Example 8 - Логічні оператори
@@ -147,20 +147,20 @@ console.log(undefined === null); // false.
 // Яким буде результат виразів?
 // && - Оператор приводить всі операнди до типу Boolean, і повертає перший який дасть false. Або останній, якщо false нема
 // || - Оператор приводить всі операнди до типу Boolean, і повертає перший який дасть true. Або останній, якщо true нема
-console.log(true && 3); // 3
-console.log(false && 3); // false
-console.log(1 && null && 2); // null
-console.log(true && 0 && 'kiwi'); // 0
+// console.log(true && 3); // 3
+// console.log(false && 3); // false
+// console.log(1 && null && 2); // null
+// console.log(true && 0 && 'kiwi'); // 0
 // true //true
 // 0 // false
 // 'kiwi' // true
 
-console.log(true || 3); // true
-console.log(true || 3 || 4); // true
-console.log(true || false || 7); // true
-console.log(null || 2 || undefined); // 2
+// console.log(true || 3); // true
+// console.log(true || 3 || 4); // true
+// console.log(true || false || 7); // true
+// console.log(null || 2 || undefined); // 2
 
-console.log((1 && null && 2) > 0); // false
+// console.log((1 && null && 2) > 0); // false
 // 1 // true
 // null // false
 // 2 // true
@@ -170,8 +170,8 @@ console.log((1 && null && 2) > 0); // false
  * 2. Виконуються порівняння null > 0
  */
 
-console.log(2 && 3); // 3
-console.log(null || (2 && 3) || 4); // 3
+// console.log(2 && 3); // 3
+// console.log(null || (2 && 3) || 4); // 3
 // 2 //true
 // 3 //true
 // 2 && 3 = 3
@@ -184,8 +184,6 @@ console.log(null || (2 && 3) || 4); // 3
  * 2. Виконується опеартор null || 3 || 4 = 3
  */
 
-
-
 // ```
 
 // ## Example 9 - Значення за замовчуванням та оператор нульового злиття
@@ -197,11 +195,11 @@ console.log(null || (2 && 3) || 4); // 3
 // false. Використовуй оператор `??` (nullish coalescing operator).
 
 // ```js
-const incomingValue = null;
-const defaultValue = 10;
-const value1 = incomingValue ?? defaultValue;
+// const incomingValue = null;
+// const defaultValue = 10;
+// const value1 = incomingValue ?? defaultValue;
 
-console.log(value1);
+// console.log(value1);
 // ```
 
 // ## Example 10 - Оператор % та методи рядків
@@ -214,22 +212,18 @@ console.log(value1);
 // - 1441 покаже 24:01
 
 // ```js
-const totalMinutes = 450;
+// const totalMinutes = 450;
 
-const hours = Math.floor(totalMinutes/60);
-const minutes = totalMinutes % 60;
+// const hours = Math.floor(totalMinutes/60);
+// const minutes = totalMinutes % 60;
 
-const formatedTime = `${String(hours).padStart(2, '0')}:${minutes}`;
-console.log(formatedTime);
+// const formatedTime = `${String(hours).padStart(2, '0')}:${minutes}`;
+// console.log(formatedTime);
 
-const string = 'abc';
-console.log(string.padStart(4, '5'))
+// const string = 'abc';
+// console.log(string.padStart(4, '5'))
 
 // ```
-
-
-
-
 
 // let clientCounter = 18;
 // const maxClients = 25;
@@ -239,7 +233,6 @@ console.log(string.padStart(4, '5'))
 //   clientCounter += 1;
 // }
 
-
 // let clientCounter = 18;
 // const maxClients = 25;
 
@@ -247,7 +240,6 @@ console.log(string.padStart(4, '5'))
 //     clientCounter += 1;
 //     console.log(clientCounter);
 // }
-
 
 // while (clientCounter < maxClients) {
 //   console.log(clientCounter);
@@ -258,3 +250,19 @@ console.log(string.padStart(4, '5'))
 //   console.log(clientCounter);
 //   clientCounter += 1;
 // } while(clientCounter < maxClients)
+function findLongestWord(string) {
+  // Change code below this line
+  const wordArray = string.split(" ");
+  let longestWord = wordArray[0];
+    console.log(wordArray);
+    console.log('было', longestWord);
+  for (let i = 0; i < wordArray.length; i++) {
+    if (longestWord.length < wordArray[i].length) {
+      longestWord = wordArray[i];
+      console.log("стало", longestWord);
+    }
+  }
+  return longestWord;
+  // Change code above this line
+}
+findLongestWord("Google do a rokllk");
