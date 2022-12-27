@@ -251,6 +251,8 @@ console.log("Lesson 1");
 //   clientCounter += 1;
 // } while(clientCounter < maxClients)
 
+
+
 // 21
 // function findLongestWord(string) {
 //   // Change code below this line
@@ -269,16 +271,18 @@ console.log("Lesson 1");
 // }
 // findLongestWord("Google do a rokllk");
 
+
+
 // 22
-function createArrayOfNumbers(min, max) {
-    const numbers = [];
-    console.log(numbers);
-  // Change code below this line
-  for (let i = min; i <= max; i += 1) {
-      numbers.push(i);
-      console.log(numbers)
-  }
-  // Change code above this line
-  return numbers;
-}
-createArrayOfNumbers(3, 6);
+// function createArrayOfNumbers(min, max) {
+//     const numbers = [];
+//     console.log(numbers);
+//   // Change code below this line
+//   for (let i = min; i <= max; i += 1) {
+//       numbers.push(i);
+//       console.log(numbers)
+//   }
+//   // Change code above this line
+//   return numbers;
+// }
+// createArrayOfNumbers(3, 6);
