@@ -1,299 +1,474 @@
-console.log("Lesson 4");
-// # Модуль 2. Заняття 4. Функції
+console.log("Модуль 3 Заняття 6. Деструктуризація та rest/spread");
 
-// ## Example 1 - Індекс маси тіла
+/** Кахут */
+// const user = {
+//   username: "Grut"
+//   //... 100
+// }
 
-// Напиши функцію `calcBMI(weight, height)` яка розраховує та повертає
-// індекс маси тіла людини. Для цього необхідно розділити вагу в кілограмах на
-// квадрат висоти людини в метрах.
+// const {username} = user
 
-// Вага та висота будуть спеціально передані як рядки. Не цілі числа можуть бути задані у вигляді
-// `24.7` або `24,7`, тобто як роздільник дробової частини
-// може бути кома.
+// function foo({username} = {}) {
+//   console.log(username)
+// }
 
-// Індекс маси тіла необхідно округлити до однієї цифри після коми;
+// foo()
+/** ---------------- */
+
+// ## Example 1 - Деструктуризація
+
+// Перепиши функцію так, щоб вона приймала один об'єкт параметрів замість набору
+// незалежних аргументів.
 
 // ```js
+function calcBMI({ weight, height }) {
+  const numericWeight = Number(weight.replace(",", "."));
+  const numericHeight = Number(height.replace(",", "."));
+  return Number((numericWeight / numericHeight ** 2).toFixed(1));
+}
 
-/**
- * 1. запитати користувача його зріст і вагу
- * 2. написати функцію, яка приймає два аругменти і повертає індекс маси тіла
- */
-
-const calcBMI = function (w, h) {
-  const weight = Number(w.replace(",", "."));
-  const height = Number(h.replace(",", "."));
-
-  const heightPow = Math.pow(height, 2);
-
-  return weight / heightPow;
+const user = {
+  weight: "88,3",
+  height: "1.75",
 };
 
-// const weight = prompt('введіть свою вагу в кілграмах');
-// const height = prompt('введіть свій зріст в метрах');
+// // Було
+// console.log(calcBMI('88,3', '1.75'));
+// // console.log(calcBMI('68,3', '1.65'));
+// // console.log(calcBMI('118,3', '1.95'));
 
-// const bmi = calcBMI(weight, height);
-// console.log(bmi); // 28.8
+// // Очікується
+// console.log(
+//   calcBMI({
+//     weight: '88,3',
+//     height: '1.75',
+//   }),
+// );
+// console.log(
+//   calcBMI({
+//     weight: '68,3',
+//     height: '1.65',
+//   }),
+// );
+// console.log(
+//   calcBMI({
+//     weight: '118,3',
+//     height: '1.95',
+//   }),
+// );
 // ```
 
-// ## Example 2 - Найменше з чисел
+// ## Example 2 - Деструктуризація
 
-// Напиши функцію `min(a,b)`, яка повертає найменше з чисел `a` та `b`.
+// Перепиши функцію так, щоб вона приймала один об'єкт параметрів замість набору
+// незалежних аргументів.
 
 // ```js
 
-const min = function (a, b) {
-  return a > b ? b : a;
+// const userA = {
+//   name: 'John',
+//   surname: 'Smith',
+//   age: 24
+// }
+
+// function printUser({name, surname, age = 'unknow'} = {}) {
+//   console.log(`User is ${name} ${surname}, his age is ${age}`)
+// }
+
+// function hello(hey = 'No argument') {
+//   console.log(hey)
+// }
+
+// printUser(userA)
+// printUser()
+
+// hello('asdsadsad')
+// hello()
+
+// function hello() {
+//   console.log('hello')
+// }
+// hello(1,2,34,55)
+
+// function printContactsInfo({names = '', phones = ''} = {}) {
+//   console.log(names, phones)
+//   const nameList = names.split(',');
+//   const phoneList = phones.split(',');
+
+//   for (let i = 0; i < nameList.length; i += 1) {
+//     console.log(`${nameList[i]}: ${phoneList[i]}`);
+//   }
+// }
+
+// // Було
+// // printContactsInfo(
+// //   'Jacob,William,Solomon,Artemis',
+// //   '89001234567,89001112233,890055566377,890055566300',
+// // );
+
+// printContactsInfo()
+
+// // Очікується
+// printContactsInfo({
+//   // names: 'Jacob,William,Solomon,Artemis',
+//   phones: '89001234567,89001112233,890055566377,890055566300',
+// });
+// ```
+
+// ## Example 3 - Глибока деструктуризація
+
+// Перепиши функцію так, щоб вона приймала один об'єкт параметрів замість набору
+// незалежних аргументів.
+
+// ```js
+// function getBotReport(companyName, repairBots, defenceBots) {
+//   return `${companyName} has ${repairBots + defenceBots} bots in stock`;
+// }
+
+function getBotReport({ companyName, bots: { repair: repairBots, defence: defenceBots } }) {
+  return `${companyName} has ${repairBots + defenceBots} bots in stock`;
+}
+
+const boatCompany = {
+  companyName: "Cyberdyne Systems",
+  bots: {
+    repair: 150,
+    defence: 50,
+  },
 };
 
-console.log(min(2, 5)); // 2
-console.log(min(3, -1)); // -1
-console.log(min(1, 1)); // 1
-console.log(min(4, 4)); // 1
+// // Було
+// console.log(getBotReport('Cyberdyne Systems', 150, 50));
+
+// // Очікується
+// console.log(getBotReport(boatCompany)); // "Cyberdyne Systems has 200 bots in stock"
 // ```
 
-// ## Example 3 - Площа прямокутника
+// ## Example 4 - Деструктуризація
 
-// Напиши функцію `getRectArea(dimensions)` для обчислення площі прямокутника
-// зі сторонами, значення яких будуть передані до параметра `dimensions` у вигляді
-// рядка. Значення гарантовано розділені пробілом.
-
-// ```js
-// console.log("square = ", getRectArea('8 11'));
-
-function getRectArea(dimensions) {
-  const sizesArr = dimensions.split(" ");
-
-  return sizesArr[0] * sizesArr[1];
-}
-
-// ```
-
-// ## Example 4 - Логування елементів
-
-// Напиши функцію `logItems(items)`, яка отримує масив та використовує цикл
-// `for`, який для кожного елемента масиву буде виводити в консоль повідомлення у
-// форматі `<номер елемента> - <значення елемента>`. Нумерація елементів повинна
-// починатися з `1`.
-
-// Наприклад для першого елемента масиву `['Mango', 'Poly', 'Ajax']` з індексом `0`
-// буде виведено `1 - Mango`, а для індексу 2 виведе `3 - Ajax`.
+// Напиши функцію, що приймає об'єкт параметрів із властивостями
+// `companyName` та `stock` та виводить звіт про кількість товарів на складі будь-якої
+// компанії.
 
 // ```js
-function logItems(items) {
-  // for (let i = 0; i < items.length; i += 1) {
-  //   console.log(`${i + 1} - ${items[i]}`)
-  // }
+function getStockReport({ companyName, stock }) {
+  let stockAmount = 0;
 
-  for (let item of items) {
-    const i = items.indexOf(item);
-    console.log(`${i + 1} - ${item}`);
-  }
-}
+  console.log(companyName);
+  console.log(stock);
 
-// logItems(['Mango', 'Poly', 'Ajax']);
-// logItems(['asdas', 'asdasd', 'dkjghk']);
-// logItems(['Mango', 'Poly', 'Ajax']);
-// logItems(['🍎', '🍇', '🍑', '🍌', '🍋']);
-// ```
+  const stockValues = Object.values(stock);
+  console.log(stockValues);
 
-// ## Example 5 - Логування контактів
-
-// Напиши функцію `printContactsInfo(names, phones)` яка виводить у консоль ім'я
-// та телефонний номер користувача. У параметри `names` та `phones` будуть передані
-// рядки імен та телефонних номерів, розділені комами. Порядковий номер імен та
-// телефонів у рядках вказують на відповідність. Кількість імен та телефонів
-// гарантовано однакова.
-
-// ```js
-function printContactsInfo(names, phones) {
-  const namesArray = names.split(",");
-  const phonesArray = phones.split(",");
-
-  const result = [];
-  // 1
-  for (let i = 0; i < namesArray.length; i += 1) {
-    result.push(`${namesArray[i]} - ${phonesArray[i]}`);
+  for (const value of stockValues) {
+    stockAmount += value;
   }
 
-  // // 2
-  // for (let item of namesArray) {
-  //   const i = namesArray.indexOf(item);
-  //   console.log(`${namesArray[i]} - ${phonesArray[i]}`)
-  // }
-
-  return result.sort();
+  return `${companyName} has ${stockAmount} bots`;
 }
 
-// printContactsInfo(
-//   'Jacob,William,Solomon,Artemis',
-//   '89001234567,89001112233,890055566377,890055566300',
-// );
+const company1 = {
+  companyName: "Cyberdyne Systems",
+  stock: {
+    repairBots: 150,
+    defenceBots: 50,
+    defenceBots2: 50,
+    defenceBots1: 50,
+  },
+};
 
-// const array = printContactsInfo(
-//   'Artem,Ivan,Petro,Semen',
-//   '89001112233,890055566377,890055566300',
-// );
+// const report = getStockReport(company1);
+// console.log(report)
 
-// console.log(array.join(' || '))
+// console.log(
+//   getStockReport({
+//     companyName: 'Cyberdyne Systems',
+//     stock: {
+//       repairBots: 150,
+//       defenceBots: 50,
+//     },
+//   }),
+// ); // "Cyberdyne Systems has 200 items in stock"
+
+// console.log(
+//   getStockReport({
+//     companyName: 'Belacci',
+//     stock: {
+//       shoes: 20,
+//       skirts: 10,
+//       hats: 5,
+//     },
+//   }),
+// ); // "Belacci has 35 item in stock"
 // ```
 
-// ## Example 6 - Пошук найбільшого елемента
+// ## Example 5 - Операція spread
 
-// Напиши функцію `findLargestNumber(numbers)`яка шукає найбільше число в
-// масиві.
+// Доповни функцію `createContact(partialContact)` так, щоб вона повертала новий
+// об'єкт контакту з доданими властивостями `id` та `createdAt`, а також `list` зі
+// значенням "default" якщо в `partialContact` немає такої властивості.
 
 // ```js
-function findLargestNumber(numbers) {
-  //1
-  return Math.max(...numbers);
-
-  //2
-  // let max = numbers[0];
-  // for (let element of numbers) {
-  //   if (element > max) {
-  //     max = element
-  //   }
-  // }
-
-  // return max
+//1
+function createContact({ name, email, list = "default" }) {
+  return {
+    name,
+    email,
+    list,
+    id: generateId(),
+    createdAt: Date.now(),
+  };
 }
 
-console.log(findLargestNumber([2, 17, 94, 1, 23, 37])); // 94
-console.log(findLargestNumber([49, 4, 7, 83, 12])); // 83
+//2
+function createContact(partialContact) {
+  return {
+    list: "default",
+    ...partialContact,
+    id: generateId(),
+    createdAt: Date.now(),
+  };
+}
+
+// const contact1 = {
+//   name: 'Mango',
+//   email: 'mango@mail.com',
+//   list: 'friends',
+// }
+
+// const newContact = createContact(contact1);
+// console.log(newContact)
+
+// console.log(
+//   createContact({
+//     name: 'Mango',
+//     email: 'mango@mail.com',
+//     list: 'friends',
+//   }),
+// );
+// console.log(
+//   createContact({
+//     name: 'Poly',
+//     email: 'poly@hotmail.com',
+//   }),
+// );
+
+function generateId() {
+  return "_" + Math.random().toString(36).substr(2, 9);
+}
 // ```
 
-// ## Example 7 - Середнє значення
+// ## Example 6 - Операція rest
 
-// Напишіть функцію `calAverage()` яка приймає довільну кількість аргументів
-// і повертає їхнє середнє значення. Усі аргументи будуть лише числами.
+// Напиши функцію `transformUsername(user)` так, щоб вона повертала новий об'єкт із властивістю
+// `fullName`, замість `firstName` та `lastName`.
 
 // ```js
-function calcAverage(...numbers) {
-  // console.log(numbers)
+function transformUsername({ firstName, lastName, friends, ...props }) {
+  return {
+    ...props,
+    fullName: `${firstName} ${lastName}`,
+  };
+}
 
-  // console.log("Total arguments = ", arguments.length);
+const user1 = {
+  id: 1,
+  firstName: "Jacob",
+  lastName: "Mercer",
+  email: "j.mercer@mail.com",
+  friendCount: 40,
+  friends: {
+    Anton: "best",
+    Ivan: "so so",
+  },
+};
 
+const newUser = transformUsername(user1);
+// console.log(newUser);
+
+// console.log(
+//   transformUsername({
+//     id: 1,
+//     firstName: 'Jacob',
+//     lastName: 'Mercer',
+//     email: 'j.mercer@mail.com',
+//     friendCount: 40,
+//   }),
+// );
+
+// console.log(
+//   transformUsername({
+//     id: 2,
+//     firstName: 'Adrian',
+//     lastName: 'Cross',
+//     email: 'a.cross@hotmail.com',
+//     friendCount: 20,
+//   }),
+// );
+// ```
+
+//Ліво - rest
+function multiply(...args) {
+  const name = "Artem";
+  console.log(args); // массив всех аргументов
+
+  return {};
+}
+
+//Право - spread
+// const third = {
+//   propB: 20,
+//   ...first,
+//   ...second,
+// };
+
+// console.log(third); // { propA: 5, propB: 10, propC: 15 }
+
+// Використовуючи операцію rest, доповни код функції add() таким чином, щоб вона приймала будь - яку кількість аргументів,  рахувала і повертала їх суму.
+function add(...args) {
   let sum = 0;
-  for (let arg of numbers) {
+  for (let arg of args) {
+    // console.log("element", arg);
     sum += arg;
   }
-
-  // return sum / arguments.length
+  return sum;
 }
 
-// console.log(calcAverage(1, 2, 3, 4, 45, 12, 67)); // 2.5
-// console.log(calAverage(14, 8, 2)); // 8
-// console.log(calAverage(27, 43, 2, 8, 36)); // 23.2
-// ```
+// console.log("sum", add(74, 11, 62, 46, 12, 36));
 
-// ## Example 8 - Форматування часу
+// Функція addOverNum() рахує суму всіх аргументів. Зміни параметри і тіло функції addOverNum() таким чином, щоб вона рахувала суму тільки тих аргументів, які більші за задане число. Це число повинно бути першим параметром функції.
+function addOverNum(number, ...args) {
+  let total = 0;
 
-// Напиши функцію `formatTime(minutes)` яка переведе значення `minutes`
-// (кількість хвилин) у рядок у форматі годин та хвилин `HH:MM`.
-
-// ```js
-// const hours = Math.floor(totalMinutes / 60);
-// const minutes = totalMinutes % 60;
-// console.log(hours);
-// console.log(minutes);
-
-// const doubleDigitHours = String(hours).padStart(2, 0);
-// const doubleDigitMinutes = String(minutes).padStart(2, 0);
-// console.log(`${doubleDigitHours}:${doubleDigitMinutes}`);
-
-function formatTime(minutes) {
-  const hours = Math.floor(minutes / 60);
-  const mins = minutes % 60;
-
-  const formatedHours = String(hours).padStart(2, "0");
-  const formatedMinutes = String(mins).padStart(2, "0");
-
-  return `${formatedHours}:${formatedMinutes}`;
-}
-
-const a = formatTime(1440);
-console.log(a); // "01:10"
-// console.log(formatTime(450)); // "07:30"
-// console.log(formatTime(1441)); // "24:01"
-// ```
-
-// ## Example 9 - Колекція курсів (includes, indexOf, push і т. д.)
-
-// Напишіть функції для роботи з колекцією навчальних курсів `courses`:
-
-// - `addCourse(name)` - додає курс до кінця колекції
-// - `removeCourse(name)` - видаляє курс із колекції
-// - `updateCourse(oldName, newName)` - змінює ім'я на нове
-
-// ```js
-const courses = ["HTML", "CSS", "JavaScript", "React", "PostgreSQL"];
-
-const lastCourseIndex = courses.length - 1;
-const lastCourse = courses[lastCourseIndex];
-
-function A(array) {
-  console.log(array);
-}
-
-A([1, 2, 3, 4]);
-
-function addCourse(name) {
-  // if (courses.includes(name)) {
-  //   return 'Ви вже маєте такий курс'
-  // }
-
-  if (courses.indexOf(name) > -1) {
-    return "Ви вже маєте такий курс";
+  for (const arg of args) {
+    if (arg > number) {
+      total += arg;
+    }
   }
 
-  courses.push(name);
-  return "Курс додано";
+  return total;
 }
 
-function deleteCourse(name = "deafult value") {
-  /**
-   * 1. Знайти індекс елемента. indexOF
-   * 2. Видаляємо елемент по індексу. splice
-   */
+// console.log(addOverNum(15, 32, 6, 13, 19, 8));
 
-  const index = courses.indexOf(name);
-  if (index === -1) {
-    return "Такого курса нема";
+// Функція findMatches() приймає довільну кількість аргументів. Першим аргументом завжди буде масив чисел, а решта аргументів будуть просто числами. Доповни код функції таким чином, щоб вона повертала новий масив matches, в якому будуть тільки ті аргументи, починаючи з другого, які є в масиві першого аргументу. Наприклад, findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7) повинна повернути масив [1, 2], тому що тільки вони є в масиві першого аргументу.
+
+function findMatches(array, ...args) {
+  // console.log(array);
+  const matches = []; // Don't change this line
+  for (let arg of args) {
+    // console.log("element", arg);
+
+    if (array.includes(arg)) {
+      matches.push(arg);
+    }
   }
 
-  const result = `Курс ${courses[index]} видалено`;
-  courses.splice(index, 1);
-
-  return result;
+  return matches;
 }
+// console.log(findMatches([10, 24, 41, 6, 9, 19], 24, 11, 9, 23, 41));
 
-function updateCourse(oldName, newName) {
-  const index = courses.indexOf(oldName);
-  if (index === -1) {
-    return "Такого курса нема";
-  }
+// Доповни метод updateBook(oldName, newName) таким чином, щоб він змінював назву книги з oldName на newName у властивості books. Використовуй indexOf() для того, щоб знайти потрібний елемент масиву, і splice() для того, щоб замінити цей елемент.
+const bookShelf = {
+  books: ["The last kingdom", "Haze", "The guardian of dreams"],
+  updateBook(oldName, newName) {
+    // Change code below this line
+    const index = this.books.indexOf(oldName);
+    console.log(index);
+    this.books.splice(index, 1, newName);
+    return this.books;
+    // Change code above this line
+  },
+};
 
-  const result = `Курс ${oldName} оновлено на курс ${newName}`;
-  courses.splice(index, 1, newName);
+// bookShelf.updateBook("Haze", "Dungeon chronicles");
+// console.log(bookShelf.books);
 
-  return result;
-}
-const arr = [8, 9, 10];
-arr.sort();
-console.log();
+// bookShelf.updateBook("The last kingdom", "Dune");
+// console.log(bookShelf.books);
 
-let res = addCourse("Express");
-console.log(courses, res); // ['HTML', 'CSS', 'JavaScript', 'React', 'PostgreSQL', 'Express']
+const atTheOldToad = {
+  potions: [
+    { name: "Speed potion", price: 460 },
+    { name: "Dragon breath", price: 780 },
+    { name: "Stone skin", price: 520 },
+  ],
 
-res = addCourse("Express");
-console.log(courses, res); // ['HTML', 'CSS', 'JavaScript', 'React', 'PostgreSQL', 'Express']
-// addCourse('CSS'); // 'Ви вже маєте такий курс'
+  getPotions() {
+    // просто повертає значення масиву об'єктів
+    return this.potions;
+  },
 
-res = deleteCourse();
-console.log(courses, res); // ['HTML', 'CSS', 'JavaScript', 'PostgreSQL', 'Express']
-// removeCourse('Vue'); // 'Курс із таким ім'ям не знайдено'
+  addPotion(newPotion) {
+    // деструктуризація змінної з об'єкту newPotion, яку будемо порівнювати
+    const { name } = newPotion;
+    console.log(name);
+    // перебираємо масив об'єктів atTheOldToad
+    for (const potion of this.potions) {
+      console.log(potion.name);
+      // на кожній ітерації порівнюємо name із вхідного об'єкта з potion.name (name - кожного з об'єктів масива)
+      if (name === potion.name) {
+        // якщо є співпадання повертаємо рядок та виходимо з функції
+        return `Error! Potion ${name} is already in your inventory!`;
+      }
+    }
+    // якщо співпадіння не має додаємо новий об'єкт у масив та виходимо з функції
+    return this.potions.push(newPotion);
+  },
 
-res = updateCourse("Expressss", "NestJS");
-console.log(courses, res); // ['HTML', 'CSS', 'JavaScript', 'PostgreSQL', 'NestJS']
-// ```
+  removePotion(potionName) {
+    // перевіряємо вхідний параметр
+    console.log("переданий аргумент (рядок):", potionName);
+    // перебираємо масив об'єктів atTheOldToad
+    for (const potion of this.potions) {
+      // створюємо змінну індекса об'єкта у масиві atTheOldToad
+      const potionIndex = this.potions.indexOf(potion);
+      // перевіряємо, що отримаємо name та індекс кожного об'єкта
+      console.log(potion.name);
+      console.log(this.potions.indexOf(potion));
+      // на кожній ітерації порівнюємо potionName із вхідного параметра з potion.name (name - кожного з об'єктів масива)
+      if (potionName === potion.name) {
+        // якщо є співпадання видаляємо об'єкт з масиву через його індекс
+        this.potions.splice(potionIndex, 1);
+      }
+    }
+    // якщо співпадання не має повертаємо рядок та виходимо з функції
+    return `Potion ${potionName} is not in inventory!`;
+  },
+
+  updatePotionName(oldName, newName) {
+    // перевіряємо вхідний параметр
+    console.log("передані аргументи:", oldName, newName);
+    // перебираємо масив об'єктів atTheOldToad
+    for (const potion of this.potions) {
+      // перевіряємо, що отримаємо значення name з кожного об'єкта масиву
+      console.log(potion.name);
+      // на кожній ітерації порівнюємо oldName із вхідного параметра з potion.name (name - кожного з об'єктів масива)
+      if (oldName === potion.name) {
+        // якщо є співпадання робимо заміну імені на нове та виходимо з функції
+        console.log("знайшли співпадіння", potion.name);
+        return (potion.name = newName);
+      }
+    }
+    // якщо співпадання не має повертаємо рядок та виходимо з функції
+    return `Potion ${oldName} is not in inventory!`;
+  },
+};
+
+console.log(atTheOldToad.getPotions());
+
+// запускати кожен метод окремо для перевірки
+
+// console.log(atTheOldToad.addPotion({ name: "Dragon breath", price: 700 }));
+// console.log(atTheOldToad.addPotion({ name: "Invisibility", price: 620 }));
+// console.log(atTheOldToad.addPotion({ name: "Power potion", price: 270 }));
+
+// console.log(atTheOldToad.removePotion("Dragon breath"));
+// console.log(atTheOldToad.getPotions());
+// console.log(atTheOldToad.removePotion("Speed potion"));
+// console.log(atTheOldToad.getPotions());
+
+// console.log(atTheOldToad.updatePotionName("Dragon breath", "Polymorth"));
+// console.log(atTheOldToad.getPotions());
+// console.log(atTheOldToad.updatePotionName("Stone skin", "Invulnerability potion"));
+// console.log(atTheOldToad.getPotions());
