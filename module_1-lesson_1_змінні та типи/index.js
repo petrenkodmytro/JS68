@@ -5,20 +5,18 @@ console.log("Lesson 1");
 // Переворот строки
 // Вы можете изменять строку с помощью split, join и reverse методов.
 
-const stringReverse = str => str.split("").reverse().join("");
+const stringReverse = (str) => str.split("").reverse().join("");
 
-stringReverse('elcitra ym ekil uoy epoh i');
+stringReverse("elcitra ym ekil uoy epoh i");
 // Result: i hope you like my article
-
 
 // Использование заглавной буквы в строке
 // Поскольку JavaScript не предоставляет встроенного метода преобразования заглавной буквы, с помощью этой однострочной функции вы можете использовать в строке заглавную букву.
 
-const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
+const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
 capitalize("i hope you like my article.");
 // I hope you like my article.
-
 
 // Округление дробей до определенного количества десятичных знаков
 
@@ -27,32 +25,29 @@ capitalize("i hope you like my article.");
 // Чтобы избежать этого странного поведения, вы можете использовать Math.round(), чтобы округлить дробь до заданного количества десятичных знаков.
 
 // Default Javascript function toFixed behaviour
-Number((1.005).toFixed(2)) //outputs 1 instead of 1.01
-Number((1.555).toFixed(2)) //outputs 1.55 instead of 1.56
+Number((1.005).toFixed(2)); //outputs 1 instead of 1.01
+Number((1.555).toFixed(2)); //outputs 1.55 instead of 1.56
 
 const round = (n, d) => Number(Math.round(n + "e" + d) + "e-" + d);
 
-round(1.005, 2) //1.01
-round(1.555, 2) //1.56
+round(1.005, 2); //1.01
+round(1.555, 2); //1.56
 
 // Получение параметров запроса из URL-адреса
 // Очень полезная функция, когда вы имеете дело с параметрами запроса в URL-адресе. Вы можете легко получить параметры запроса из него, передав URL-адрес в качестве аргумента функции.
 
-const getParameters = (URL) => JSON.parse('{"' + decodeURI(URL.split("?")[1]).replace(/"/g, '\"').replace(/&/g, '","').replace(/=/g, '":"') +'"}');
+const getParameters = (URL) => JSON.parse('{"' + decodeURI(URL.split("?")[1]).replace(/"/g, '"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
 
 getParameters("https://www.google.de/search?q=cars&start=40");
 // Result: { q: 'cars', start: '40' }
 
-
 // Получение среднего значения массива чисел
 // Редуктор JavaScript позволяет вычислять среднее значение массивов в одной строке. Метод Reduce очень полезен при написании однострочных решений для ряда проблем, таких как нахождение суммы или максимума в массиве чисел.
 
-const average = arr => arr.reduce((a, b) => a + b) / arr.length;
+const average = (arr) => arr.reduce((a, b) => a + b) / arr.length;
 
-average([21, 56, 23, 122, 67])
+average([21, 56, 23, 122, 67]);
 //57.8
-
-
 
 // ## Example 1 - Математичні оператори
 
@@ -303,27 +298,23 @@ average([21, 56, 23, 122, 67])
 //   clientCounter += 1;
 // } while(clientCounter < maxClients)
 
-
-
 // 21
-// function findLongestWord(string) {
-//   // Change code below this line
-//   const wordArray = string.split(" ");
-//   let longestWord = wordArray[0];
-//     console.log(wordArray);
-//     console.log('было', longestWord);
-//   for (let i = 0; i < wordArray.length; i++) {
-//     if (longestWord.length < wordArray[i].length) {
-//       longestWord = wordArray[i];
-//       console.log("стало", longestWord);
-//     }
-//   }
-//   return longestWord;
-//   // Change code above this line
-// }
-// findLongestWord("Google do a rokllk");
-
-
+function findLongestWord(string) {
+  // Change code below this line
+  const wordArray = string.split(" ");
+  let longestWord = wordArray[0];
+  console.log(wordArray);
+  console.log("было", longestWord);
+  for (let i = 0; i < wordArray.length; i++) {
+    if (longestWord.length < wordArray[i].length) {
+      longestWord = wordArray[i];
+      console.log("стало", longestWord);
+    }
+  }
+  return longestWord;
+  // Change code above this line
+}
+// findLongestWord("Google do a roklsclk");
 
 // 22
 // function createArrayOfNumbers(min, max) {
@@ -338,3 +329,17 @@ average([21, 56, 23, 122, 67])
 //   return numbers;
 // }
 // createArrayOfNumbers(3, 6);
+
+// Реализуйте функцию filterString(), принимающую на вход строку и символ, и возвращающую новую строку, в которой удален переданный символ во всех его позициях. Регистр символов важен.
+
+const str = "If I look back I am lost";
+function filterString(string, letter) {
+  console.log(string.length);
+  let letterArray = string.split(letter).join("");
+
+  return letterArray;
+}
+// console.log(filterString(str, "I"));
+// 'f  look back  am lost'
+console.log(filterString("zz Zorro", "z"));
+// ' Zorro'
