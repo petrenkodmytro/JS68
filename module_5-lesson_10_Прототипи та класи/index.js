@@ -523,10 +523,15 @@ const mangor = new Admin({
   accessLevel: Admin.AccessLevel.SUPERUSER,
 });
 
-console.log(mangor.email); // "mango@mail.com"
-console.log(mangor.accessLevel); // "superuser"
+// console.log(mangor.email); // "mango@mail.com"
+// console.log(mangor.accessLevel); // "superuser"
 
-mangor.blacklist("poly@mail.com");
-console.log(mangor.blacklistedEmails); // ["poly@mail.com"]
-console.log(mangor.isBlacklisted("mango@mail.com")); // false
-console.log(mangor.isBlacklisted("poly@mail.com")); // true
+// mangor.blacklist("poly@mail.com");
+// console.log(mangor.blacklistedEmails); // ["poly@mail.com"]
+// console.log(mangor.isBlacklisted("mango@mail.com")); // false
+// console.log(mangor.isBlacklisted("poly@mail.com")); // true
+
+// set-колекцыия уникальных элементов (нет повторяющихся)
+const arryNumber = [...new Set([3, 1, 2, 3, 4])];
+console.log(new Set([3, 1, 2, 3, 4]));
+console.log(arryNumber.length, arryNumber[2]);

@@ -1,4 +1,4 @@
-// "use strict"
+// "use strict";
 console.log("# Модуль 5. Заняття 9. Контекст виклику функції та this");
 
 // function foo() {
@@ -42,7 +42,7 @@ const chopShop = {
     return foundStone.price * foundStone.quantity;
   },
 };
-
+// console.log(...chopShop.stones);
 // console.log(chopShop.calcTotalPrice('Emeradld')); // 5200
 // console.log(chopShop.calcTotalPrice('Diamond')); // 8100
 // console.log(chopShop.calcTotalPrice('Sapphire')); // 9800
@@ -185,7 +185,7 @@ const cat = {
 const objABC1 = {
   nickName: "UserABC",
   getNickName({ country, b, ...props }) {
-    console.log(country, b, props);
+    // console.log(country, b, props);
     // console.log(
     //   `Hi, I'm ${this.nickName}, I'm from ${country} and have got ${b} followers`
     // );
@@ -201,6 +201,7 @@ objABC1.getNickName({
   b: "b",
   c: "c",
 });
+
 
 // const objDAB1 = {
 //   nickName: 'UserDAB',
@@ -249,6 +250,43 @@ const user = {
   },
 };
 
-user.greet();
-user.mother.greet();
-user.mother.father.greet();
+// user.greet();
+// user.mother.greet();
+// user.mother.father.greet();
+
+//this в callback-функціях
+("user strict");
+const customer = {
+  firstName: "Jacob",
+  lastName: "Mercer",
+  getFullName() {
+    console.log(this);
+    return `${this.firstName} ${this.lastName}`;
+  },
+};
+
+function makeMessage(callback) {
+  // callback() - це виклик методу getFullName без об'єкта
+  console.log(`Обробляємо заявку від ${callback()}.`);
+}
+// makeMessage(customer.getFullName);
+
+//this у стрілочних функціях
+const hotel = {
+  username: "Resort hotel",
+  showThis() {
+    const foo = () => {
+      // Стрілки запам'ятовують контекст під час оголошення
+      // з батьківської області видимості
+      console.log("this in foo: ", this);
+    
+    };
+
+    foo();
+    console.log("this in showThis: ", this);
+  },
+};
+
+// hotel.showThis();
+// this in foo: {username: 'Resort hotel', showThis: ƒ}
+// this in showThis: {username: 'Resort hotel',showThis: ƒ}

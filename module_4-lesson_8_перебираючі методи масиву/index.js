@@ -230,7 +230,7 @@ const getTotalAmount = (cars) => {
   }, {});
 };
 
-console.log(getTotalAmount(cars));
+// console.log(getTotalAmount(cars));
 // ```
 
 // ## Example 9 - Ланцюжки методів
@@ -247,7 +247,7 @@ const getModelsOnSale = (cars) => {
   cars.filter((el) => el.onSale).map((el) => el.model);
 };
 
-console.table(getModelsOnSale(cars));
+// console.table(getModelsOnSale(cars));
 // ```
 
 // ## Example 10 - Ланцюжки методів
@@ -364,7 +364,7 @@ const countTags = (tags) =>
   }, {});
 
 const tagCount = countTags(tags);
-console.log(tagCount);
+// console.log(tagCount);
 
 // function printContactsInfo({ names, phones }) {
 //   const nameList = names.split(',');
@@ -383,4 +383,8 @@ console.log(tagCount);
 // });
 
 const array = ["Jacob", "William", "Solomon", "Artemis"];
-console.log(array[2]);
+// console.log(array[2]);
+
+const arr1 = [(x) => x * 1, (x) => x * 2, (x) => x * 3, (x) => x * 4];
+console.log(arr1);
+console.log(arr1.reduce((acc, el) => acc + el(acc), 1));

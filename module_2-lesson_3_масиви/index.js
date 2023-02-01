@@ -75,7 +75,7 @@ const firsElem = genres.shift();
 // console.log(firsElem)
 
 genres.unshift("Country", "Reggae");
-console.log(genres);
+// console.log(genres);
 // ```
 
 // ## Example 2 - Масиви та рядки
@@ -92,10 +92,10 @@ console.log(genres);
 const values = "8 11";
 
 const sizesArray = values.split(" ");
-console.log(sizesArray);
+// console.log(sizesArray);
 
 const square = sizesArray[0] * sizesArray[1];
-console.log(square);
+// console.log(square);
 // ```
 
 // ## Example 3 - Перебір масиву
@@ -138,9 +138,9 @@ const phones = "89001234567,89001112233,890055566377,890055566300";
 const namesArray = names.split(",");
 const phonesArray = phones.split(",");
 
-for (let i = 0; i < namesArray.length; i += 1) {
-  console.log(`${namesArray[i]}: ${phonesArray[i]}`);
-}
+// for (let i = 0; i < namesArray.length; i += 1) {
+//   console.log(`${namesArray[i]}: ${phonesArray[i]}`);
+// }
 // ```
 
 // ## Example 5 - Масиви та рядки
@@ -157,7 +157,7 @@ stringArray.pop();
 stringArray.shift();
 
 const result = stringArray.join(" ");
-console.log(result);
+// console.log(result);
 // ```
 
 // ## Example 6 - Масиви та рядки
@@ -189,7 +189,7 @@ const string1 = "Welcome to the future";
 // ```js
 const langs = ["python", "javascript", "c++", "haskel", "php", "ruby"];
 langs.sort();
-console.log(langs);
+// console.log(langs);
 // ```
 
 // ## Example 8 - Пошук елемента
@@ -207,5 +207,17 @@ for (let i = 1; i < numbers.length; i += 1) {
   }
 }
 
-console.log(min); // 1
+// console.log(min); // 1
 // ```
+
+const myFunc = (str) => {
+  if (str.length > 1) {
+    console.log(str);
+    console.log(str.slice(1));
+    console.log(str.length);
+
+    return myFunc(str.slice(1));
+  }
+  return str;
+};
+console.log(myFunc("Hello world"));
