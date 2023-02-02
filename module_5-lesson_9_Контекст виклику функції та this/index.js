@@ -202,7 +202,6 @@ objABC1.getNickName({
   c: "c",
 });
 
-
 // const objDAB1 = {
 //   nickName: 'UserDAB',
 // };
@@ -279,7 +278,6 @@ const hotel = {
       // Стрілки запам'ятовують контекст під час оголошення
       // з батьківської області видимості
       console.log("this in foo: ", this);
-    
     };
 
     foo();
@@ -290,3 +288,38 @@ const hotel = {
 // hotel.showThis();
 // this in foo: {username: 'Resort hotel', showThis: ƒ}
 // this in showThis: {username: 'Resort hotel',showThis: ƒ}
+
+// Замыкание это способ получения доступа и управления внешними переменными из функции.
+
+function Person(name) {
+  var secret = "secret!";
+  this.name = name;
+  this.setName = function (newName) {
+    return this.name = newName;
+  };
+  this.setNameToFoo = function () {
+    return this.name = foo;
+  };
+  this.getSecret = function () {
+    return secret;
+  };
+}
+
+var a = new Person("Max");
+
+// console.log(a.name);
+a.name; //> “Max”
+a.setName("Oliver");
+console.log(a.setName("Oliver"));
+a.name; //> “Oliver”
+a.setNameToFoo(); //> ERROR: foo is undefined
+console.log(a.setNameToFoo());
+
+var foo = "Foo";
+a.setNameToFoo();
+a.name; //> “Foo”
+console.log(a.setNameToFoo());
+
+a.secret; //> undefined
+a.getSecret(); //> “Secret!”
+console.log(a.secret);
