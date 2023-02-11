@@ -46,10 +46,10 @@ const min = function (a, b) {
   return a > b ? b : a;
 };
 
-console.log(min(2, 5)); // 2
-console.log(min(3, -1)); // -1
-console.log(min(1, 1)); // 1
-console.log(min(4, 4)); // 1
+// console.log(min(2, 5)); // 2
+// console.log(min(3, -1)); // -1
+// console.log(min(1, 1)); // 1
+// console.log(min(4, 4)); // 1
 // ```
 
 // ## Example 3 - Площа прямокутника
@@ -159,8 +159,8 @@ function findLargestNumber(numbers) {
   // return max
 }
 
-console.log(findLargestNumber([2, 17, 94, 1, 23, 37])); // 94
-console.log(findLargestNumber([49, 4, 7, 83, 12])); // 83
+// console.log(findLargestNumber([2, 17, 94, 1, 23, 37])); // 94
+// console.log(findLargestNumber([49, 4, 7, 83, 12])); // 83
 // ```
 
 // ## Example 7 - Середнє значення
@@ -213,7 +213,7 @@ function formatTime(minutes) {
 }
 
 const a = formatTime(1440);
-console.log(a); // "01:10"
+// console.log(a); // "01:10"
 // console.log(formatTime(450)); // "07:30"
 // console.log(formatTime(1441)); // "24:01"
 // ```
@@ -236,7 +236,7 @@ function A(array) {
   console.log(array);
 }
 
-A([1, 2, 3, 4]);
+// A([1, 2, 3, 4]);
 
 function addCourse(name) {
   // if (courses.includes(name)) {
@@ -281,19 +281,33 @@ function updateCourse(oldName, newName) {
 }
 const arr = [8, 9, 10];
 arr.sort();
-console.log();
+// console.log();
 
 let res = addCourse("Express");
-console.log(courses, res); // ['HTML', 'CSS', 'JavaScript', 'React', 'PostgreSQL', 'Express']
+// console.log(courses, res); // ['HTML', 'CSS', 'JavaScript', 'React', 'PostgreSQL', 'Express']
 
 res = addCourse("Express");
-console.log(courses, res); // ['HTML', 'CSS', 'JavaScript', 'React', 'PostgreSQL', 'Express']
+// console.log(courses, res); // ['HTML', 'CSS', 'JavaScript', 'React', 'PostgreSQL', 'Express']
 // addCourse('CSS'); // 'Ви вже маєте такий курс'
 
 res = deleteCourse();
-console.log(courses, res); // ['HTML', 'CSS', 'JavaScript', 'PostgreSQL', 'Express']
+// console.log(courses, res); // ['HTML', 'CSS', 'JavaScript', 'PostgreSQL', 'Express']
 // removeCourse('Vue'); // 'Курс із таким ім'ям не знайдено'
 
 res = updateCourse("Expressss", "NestJS");
-console.log(courses, res); // ['HTML', 'CSS', 'JavaScript', 'PostgreSQL', 'NestJS']
+// console.log(courses, res); // ['HTML', 'CSS', 'JavaScript', 'PostgreSQL', 'NestJS']
 // ```
+
+// task
+// ("user strict");
+foo();
+function foo() {
+  console.log(1);
+}
+var foo = function () {
+  console.log(2);
+};
+function foo() {
+  console.log(3);
+}
+foo();

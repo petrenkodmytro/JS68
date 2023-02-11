@@ -386,5 +386,35 @@ const array = ["Jacob", "William", "Solomon", "Artemis"];
 // console.log(array[2]);
 
 const arr1 = [(x) => x * 1, (x) => x * 2, (x) => x * 3, (x) => x * 4];
-console.log(arr1);
-console.log(arr1.reduce((acc, el) => acc + el(acc), 1));
+// console.log(arr1);
+// console.log(arr1.reduce((acc, el) => acc + el(acc), 1));
+
+// codeWars
+//My grandfather always predicted how old people would get, and right before he passed away he revealed his secret! In honor of my grandfather's memory we will write a function using his formula! Take a list of ages when each of your great-grandparent died. Multiply each number by itself. Add them all together. Take the square root of the result. Divide by two. Note: the result should be rounded down to the nearest integer.
+function predictAge(age1, age2, age3, age4, age5, age6, age7, age8) {
+  //1
+  // const ageArray = [...arguments];
+  // console.log(ageArray);
+  // const ageArrayMulty = ageArray.map((item) => item * item);
+  // console.log(ageArrayMulty);
+  // const total = ageArrayMulty.reduce((previousValue, number) => {
+  //   return previousValue + number;
+  // }, 0);
+  // console.log(total);
+  // const halfOfMathSqrt = Math.sqrt(total)/2;
+  // console.log(halfOfMathSqrt);
+  // const result = Math.floor(halfOfMathSqrt);
+  // console.log(result);
+  // return result
+
+  //2
+  const totalOfArr = [...arguments]
+    .map((item) => item * item)
+    .reduce((acc, number) => {
+      return acc + number;
+    }, 0);
+  const result = Math.floor(Math.sqrt(totalOfArr) / 2);
+  return result;
+}
+
+console.log(predictAge(65, 60, 75, 55, 60, 63, 64, 45) === 86);
