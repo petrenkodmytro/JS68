@@ -300,14 +300,31 @@ res = updateCourse("Expressss", "NestJS");
 
 // task
 // ("user strict");
-foo();
+
+
+// foo();
 function foo() {
   console.log(1);
 }
+// объявленая через фанкшен экспрешен имеет преимущество
 var foo = function () {
   console.log(2);
 };
+// перезапись foo
 function foo() {
   console.log(3);
 }
-foo();
+// foo();
+
+
+
+//---exemple---
+function A() {
+  console.log("i am body of func");
+  return "i am return of func";
+}
+
+// A();// виконується тіло фун-ції(console.log), фун-ція повертає return, але ми його не бачимо, бо не виводимо у консоль
+// console.log(A());// виконується тіло фун-ції(console.log), фун-ція повертає return, ми його бачимо, бо виводимо у консоль
+// const B = A();// теж саме що і A()
+// console.log(B);// виводимо у консоль змінну В, у якій записаний return фун-ції А
