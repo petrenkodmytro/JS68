@@ -331,7 +331,6 @@ function findLongestWord(string) {
 // createArrayOfNumbers(3, 6);
 
 // Реализуйте функцию filterString(), принимающую на вход строку и символ, и возвращающую новую строку, в которой удален переданный символ во всех его позициях. Регистр символов важен.
-
 const str = "If I look back I am lost";
 function filterString(string, letter) {
   console.log(string.length);
@@ -341,5 +340,17 @@ function filterString(string, letter) {
 }
 // console.log(filterString(str, "I"));
 // 'f  look back  am lost'
-console.log(filterString("zz Zorro", "z"));
+// console.log(filterString("zz Zorro", "z"));
 // ' Zorro'
+
+console.log(parseInt("a123"));
+console.log(Number("123z"));
+console.log(parseInt("a123") == Number("123z"));
+
+console.log(typeof ("10" / 5));
+console.log(typeof "10" / 5 + typeof NaN);
+
+console.log(isNaN("10" / 5));
+
+console.log(typeof (50 + "100px"));
+console.log(typeof (50 + +"100px") === "number" ? "orange" : "apple");
